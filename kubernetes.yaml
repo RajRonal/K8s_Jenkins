@@ -1,35 +1,36 @@
 apiVersion: apps/v1
 kind : Deployment
 metadata:
-  name: webapp-deployment
+  name: myapp-deployment
   lables:
-    app: webapp
+    app: myapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: webapp
+      app: myapp
   template:
     metadata:
       labels:
-        app: webapp
+        app: myapp
     spec:
       containers:
-        -  name: webapp
+      -  name: myapp
            image: ronalraj/jenkins:v1
            ports:
            -  containerPort: 8080
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: webapp-service
+  name: myapp-service
 spec:
   selector:
-    app: webapp
+    app: myapp
   type: LoadBalancer
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
-      nodePort:  30009
+      nodePort:  30008
