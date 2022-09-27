@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       -  name: myapp
-           image: ronalraj/jenkins:v1
+           image: ronalraj/jenkins:latest
            ports:
            -  containerPort: 8080
 
